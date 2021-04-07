@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React</title>
+    <!-- Library -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+  // Création de composant en créant des classes
+  class Hello extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        texteExemple: "Baba",
+      };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    render() {
+      return (
+        <div>
+          <a href="https://fr.reactjs.org/docs/forms.html#controlled-components">
+                  Documentation sur la gestions des formulaires et des inputs
+                </a>
+          <div>
+            <p>Voici un input qui est lié au state texteExemple</p>
+            <input value={this.state.texteExemple} onChange={this.handleChange}/>
+            <p>Voici sa valeur {this.state.texteExemple}</p>
+          </div>
+          <div>
+            <p>
+              En vous basant sur l'exemple ci-dessus :
+              Créer un input de type texte qui permettra de saisir un texte et qui aura pour value un attribut text définis au préalable par vos soin dans le state
+            </p>
+            <p>
+              Créer une méthode "handleTextChange" qui sera déclenchée à chaque fois que le texte changera. Cette méthode
+              sera appelée avec le déclencheur onChange de l'input et fera appel a la method setState pour mettre a jours le state de text
+            </p>
+            <p>Afficher la valeur de text ici : </p>
+          </div>
+        </div>
+      )
+    }
+
+    handleChange(event) {
+      this.setState({
+        texteExemple: event.target.value,
+      })
+    }
+  }
+
+  // Rendu dans le DOM
+  ReactDOM.render(
+    <Hello/>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>
