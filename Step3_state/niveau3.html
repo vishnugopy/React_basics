@@ -24,9 +24,11 @@
       super(props);
       this.state = {
         texteExemple: "Baba",
+        mytexte: "sdsdsddsd",
       };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
     }
 
     render() {
@@ -43,13 +45,15 @@
           <div>
             <p>
               En vous basant sur l'exemple ci-dessus :
-              Créer un input de type texte qui permettra de saisir un texte et qui aura pour value un attribut text définis au préalable par vos soin dans le state
+              Créer un input de type texte qui permettra de saisir un texte et 
+              qui aura pour value un attribut text définis au préalable par vos soin dans le state
             </p>
+            <input value={this.state.mytexte} onChange={this.handleTextChange}/>
             <p>
               Créer une méthode "handleTextChange" qui sera déclenchée à chaque fois que le texte changera. Cette méthode
               sera appelée avec le déclencheur onChange de l'input et fera appel a la method setState pour mettre a jours le state de text
             </p>
-            <p>Afficher la valeur de text ici : </p>
+            <p>Afficher la valeur de text ici :{this.state.mytexte} </p>
           </div>
         </div>
       )
@@ -60,7 +64,18 @@
         texteExemple: event.target.value,
       })
     }
+
+    handleTextChange(event) {
+      this.setState({
+        mytexte: event.target.value,
+      })
+    }
+
+
+
   }
+
+  
 
   // Rendu dans le DOM
   ReactDOM.render(

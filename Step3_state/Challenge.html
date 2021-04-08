@@ -40,6 +40,9 @@
         newAnimalType: "",
         newAnimalName: "",
       }
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleTextChange = this.handleTextChange.bind(this);
     }
 
     render() {
@@ -49,9 +52,12 @@
                 <li>
                     Afficher la liste des animaux dans une boucle map. Pour chaque animal, afficher son nom, et son type
                 </li>
+               {this.state.animaux.map((animal , i) => <span key={i}>{animal.name} - {animal.type}</span> )}
                 <li>
                     Créer un input texte qui permet de saisir la valeur du state newAnimalType. Quand sa valeur change, la valeur de newAnimalType est mise à jour.
                 </li>
+                <input value={this.state.newAnimalType} onChange={this.handleChange}/>
+                <input value={this.state.newAnimalName} onChange={this.handleTextChange}/>
                 <li>
                     Créer un autre input texte qui permet de saisir la valeur du state newAnimalName, avec le même fonctionnement
                 </li>
@@ -68,7 +74,21 @@
         </div>
       )
     }
+
+    handleChange(event) {
+      this.setState({
+        newAnimalType: event.target.value,
+      })
+    }
+
+    handleTextChange(event) {
+      this.setState({
+        newAnimalName: event.target.value,
+      })
+    }
+
   }
+
 
   // Rendu dans le DOM
   ReactDOM.render(
